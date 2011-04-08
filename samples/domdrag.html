@@ -1,0 +1,101 @@
+<head>
+<title>Experiment that lets you drag frames around</title>
+<!--
+Fails in Android upto and including XOOM honeycomb
+-->
+<meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+<meta name="viewport" content="width=device-width" />
+<script src="magictouch.js"></script>
+<script src="jquery.min.js"></script>
+<style>
+.frame {position: absolute; left: 0; top: 0; width: 320px; height: 240px; background: green;}
+#console {position: absolute; right: 0; top: 0;}
+</style>
+</head>
+
+<body>
+<div id="console"></div>
+<div class="frame"></div>
+<div class="frame"></div>
+<object id="tuio" type="application/x-tuio" style="width: 0px; height: 0px;">Plugin FAILED to load</object>
+
+<script>
+function init() {
+  log('init')
+
+  $('.frame').each(function(index, frame) {
+    var x, y;
+    frame.addEventListener('touchstart', function(event) {
+      // Save the position of the touchstart
+      var touch = event.targetTouches[0];
+      x = touch.pageX;
+      y = touch.pageY;
+      log('touchstart page at x: ' + touch.pageX + ' y: ' + touch.pageY);
+      log('touchstart targetTouches: ' + event.targetTouches.length);
+    });
+
+    frame.addEventListener('touchmove', function(event) {
+      log('touchmove. x: ' + x + ' y: ' + y);
+      // Compute the difference between the start and the new position
+      var touch = event.targetTouches[0];
+      //log('touch at x: ' + touch.pageX + ' y: ' + touch.pageY);
+      // Update the position of the frame
+      var offset = $(frame).offset();
+      var diffX = touch.pageX - x + offset.left;
+      var diffY = touch.pageY - y + offset.top;
+      x = touch.pageX;
+      y = touch.pageY;
+      var translate = 'translate(' + diffX + 'px, ' + diffY + 'px)';
+      $(frame).css('-webkit-transform', translate);
+
+      // Prevent iPad from scrolling
+      event.preventDefault();
+      // Prevent event from bubbling up to document
+      event.stopPropagation();
+    });
+
+    frame.addEventListener('touchend', function(event) {
+      log('touchend');
+    });
+  });
+
+  document.body.addEventListener('touchmove', function(event) {
+    log('document touchmove');
+    // Get the touch point
+    var touch = event.targetTouches[0];
+    // Determine if any DOM elements were touched
+    $('.frame').each(function(index, item) {
+      if (contains(item, [touch.pageX, touch.pageY])) {
+        log('touched item #' + index + '!');
+        $(item).remove();
+      }
+    });
+    // Prevent iPad from scrolling
+    event.preventDefault();
+  });
+}
+
+function log(message) {
+  $('#console').prepend('<div>' + message + '</div>');
+}
+
+function contains(element, point) {
+  // Returns true if the specified element contains a point
+  var $e = $(element);
+  var offset = $e.offset();
+  var x = offset.left;
+  var y = offset.top;
+  var px = point[0], py = point[1];
+  var width = $e.width();
+  var height = $e.height();
+  log('bounding box: ' + [x, y, width, height]);
+  log('point: ' + point);
+  return (x < px && px < (x + width)) && (y < py && py < (y + height));
+}
+
+setInterval(function() {
+  $('#console').empty();
+}, 2000);
+init();
+</script>
+</body>
