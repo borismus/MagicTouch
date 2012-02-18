@@ -1,17 +1,20 @@
-MagicTouch.js by Boris Smus
+#MagicTouch.js *by Boris Smus*
 
 Standards-compatible touch event implementation to make it easier to develop
 web applications for for multitouch devices.
 
-1. Install npTuioClient NPAPI plugin: https://github.com/fajran/npTuioClient
-- Copy npTuioClient.plugin to ~/Library/Internet Plug-Ins/
+##Installation
 
-2. Install TongSeng: https://github.com/fajran/tongseng
-- Run TongSeng.app and press the Start button
+1. Install [npTuioClient NPAPI plugin:](https://github.com/fajran/npTuioClient)
+  * Copy npTuioClient.plugin to ~/Library/Internet Plug-Ins/
 
-3. Include MagicTouch.js and embed the npTuioClient plugin in your application:
-http://github.com/borismus/MagicTouch
+2. Install [TongSeng](https://github.com/fajran/tongseng)
+  * Run TongSeng.app and press the Start button
 
+3. Include [MagicTouch.js](http://github.com/borismus/MagicTouch) and embed the npTuioClient plugin in your application:
+
+
+```html
 <head>
   <!-- your head -->
   <script src=”/path/to/magictouch.js"</script>
@@ -23,8 +26,10 @@ http://github.com/borismus/MagicTouch
     Touch input plugin failed to load!
   </object>
 </body>
+```
 
-4. Use touch* event APIs:
-	http://dvcs.w3.org/hg/webevents/raw-file/tip/touchevents.html
+4. Use `touch event` [APIs](http://dvcs.w3.org/hg/webevents/raw-file/tip/touchevents.html)
+
+##Browser Compatibility
 
 Tested on Chrome 10
