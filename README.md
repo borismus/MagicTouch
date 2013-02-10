@@ -30,7 +30,7 @@ web applications for for multitouch devices.
 </body>
 ```
 
-4. Use `touch event` [APIs](http://dvcs.w3.org/hg/webevents/raw-file/tip/touchevents.html)
+4. Use `touch event` [APIs](http://www.w3.org/TR/touch-events/)
 
 ##Browser Compatibility
 
