@@ -19,7 +19,7 @@ web applications for for multitouch devices.
 ```html
 <head>
   <!-- your head -->
-  <script src=”/path/to/magictouch.js"</script>
+  <script src="/path/to/magictouch.js"</script>
 </head>
 
 <body>
