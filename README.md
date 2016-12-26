@@ -35,3 +35,10 @@ web applications for for multitouch devices.
 ##Browser Compatibility
 
 Tested on Chrome 10
+
+## Support
+
+If you're having problems with using the project, use the support forum at CodersClan.
+
+<a href="http://codersclan.net/forum/index.php?repo_id=29"><img src="http://www.codersclan.net/graphics/getSupport_blue_big.png" width="160"></a>
+
