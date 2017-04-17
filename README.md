@@ -1,9 +1,9 @@
-#MagicTouch.js *by Boris Smus*
+# MagicTouch.js *by Boris Smus*
 
 Standards-compatible touch event implementation to make it easier to develop
 web applications for for multitouch devices.
 
-##Installation
+## Installation
 
 1. Install [npTuioClient NPAPI plugin:](https://github.com/fajran/npTuioClient)
   * Copy npTuioClient.plugin to ~/Library/Internet Plug-Ins/
@@ -32,6 +32,6 @@ web applications for for multitouch devices.
 
 4. Use `touch event` [APIs](http://www.w3.org/TR/touch-events/)
 
-##Browser Compatibility
+## Browser Compatibility
 
 Tested on Chrome 10
